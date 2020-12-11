@@ -9,6 +9,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Function that visualizes the weighted graph
 def show_weighted_graph(G):
     pos = nx.planar_layout(G)
     nx.draw(G, pos)
@@ -19,6 +20,8 @@ def show_weighted_graph(G):
     plt.show()
     
 
+# Function that visualizes the subtree with edges & nodes
+# demonstrating Prim's Algorithm   
 def draw_subtree(G, T):
     pos = nx.planar_layout(G)
     nx.draw_networkx(G, pos)

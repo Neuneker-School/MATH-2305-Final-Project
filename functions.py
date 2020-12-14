@@ -7,40 +7,108 @@ Created on Sun Dec  6 20:55:28 2020
 
 import networkx as nx
 
-# Function to return set of vertices
 def V(graph):
+    """Takes in a number of vertices.
+    
+    Parameters   
+    ----------
+    
+    Returns    
+    -------    
+    A graph with set number of vertices.
+    """
     return set(graph.nodes())
 
-# Function to return set of edges
 def E(graph):
+     """Takes in a number of edges.
+    
+    Parameters   
+    ----------
+    
+    Returns    
+    -------    
+    A graph with set number of edges.
+    """
     return set(graph.edges())
 
-# Function to intialize the tree
-# v is the starting vertex/node
 def prims_initialize(graph , v):
+     """Function to intialize the tree
+    
+    Parameters   
+    ----------
+    graph : NetworkX graph 
+    
+    v : starting vertex/node
+    
+    Returns    
+    -------  
+    Error if vertix is not found, otherwise graph.
+    """
+    
     if v not in V(graph):
         return 'Error vertex not found'
     T = nx.Graph()
     T.add_node(v)
     return T
 
-# Function to check if graph is spanning (i.e. have we spanned across all vertices/nodes)
 def is_spanning(graph, subgraph):
+    """Checks to see if graph is spanning.
+    
+    Parameters   
+    ----------
+    Graph
+    Subgraph
+    
+    Returns    
+    -------    
+    A graph containing all spanning vertices/nodes
+    """
     return V(graph) ==  V(subgraph)
 
-# Function to return the weight of the edge
-# e is the nodes on either side of the edge
 def cost(G, e):
+    """Returns the weight of the edges of G.
+    
+    Parameters
+    ----------
+    G: NetworkX graph
+    
+    e : the nodes on either side of the edge.
+    
+    Returns
+    -------
+    Weight of the edges of G.
+    """
     return G[e[0]][e[1]]['weight']
 
-# Function to return the list of possible edges remaining
 def possible_edges(G, T):
+    """Returns the list of possible edges remaining.
+    
+    Parameters
+    ----------
+    G : NetworkX graph
+    
+    T : Prim's Algorithm
+    
+    Returns
+    -------
+    List of possible edges remaining.
+    """
     return [e for e in list(G.edges(V(T))) 
              if e[0] not in V(T)
              or e[1] not in V(T)]
 
-# Function to return the edge with the lowest cost/weight
 def min_cost_edge(G, T):
+    """Returns the edge with the lowest cost/weight. 
+    
+    Parameters
+    ----------
+    G : NetworkX graph
+    T : Prim's Algorithm
+    
+    Returns
+    -------
+    The edge with the lowest cost/weight.
+    """
     edge_list = possible_edges(G, T)
     edge_list.sort(key = lambda e : cost(G, e))
     return edge_list[0]

@@ -8,8 +8,6 @@ Created on Sun Dec  6 20:54:45 2020
 from functions import min_cost_edge, prims_initialize, is_spanning, E, cost
 from drawing import show_weighted_graph, draw_subtree
 
-
-# Function implementing prims algorithm
 def prims_algorithm(G, starting_vertex, show_graph = False, show_cost = False):
     if show_graph == True:
         show_weighted_graph(G)

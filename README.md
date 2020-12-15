@@ -20,7 +20,7 @@ Math2305FinalProject.functions.py
 Math2305FinalProject.test.py
 Math2305FinalProject.main.py
 ```
-## Contributing
+## Contribution
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to add or change.
 
 Please make sure to update tests as deemed neccessary.

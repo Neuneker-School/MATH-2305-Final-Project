@@ -16,3 +16,7 @@ Math2305FinalProject.pluralize('word') # returns 'words'
 Math2305FinalProject.pluralize('goose') # returns 'geese'
 Math2305FinalProject.singularize('phenomena') # returns 'phenomenon'
 ```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to add or change.
+
+Please make sure to update tests as deemed neccessary.

@@ -9,6 +9,19 @@ from functions import min_cost_edge, prims_initialize, is_spanning, E, cost
 from drawing import show_weighted_graph, draw_subtree
 
 def prims_algorithm(G, starting_vertex, show_graph = False, show_cost = False):
+    """Primary execution function for solving Prims Algorithm 
+    
+    Parameters
+    ----------
+    G : NetworkX graph
+    starting_vertex : the vertex to use as a starting point
+    show_graph : should the graph be rendered
+    show_cost : should the cost of the tree be output
+    
+    Returns
+    -------
+    The resulting graph
+    """
     if show_graph == True:
         show_weighted_graph(G)
         

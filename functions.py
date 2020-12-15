@@ -6,6 +6,7 @@ Created on Sun Dec  6 20:55:28 2020
 """
 
 import networkx as nx
+import os
 
 def V(graph):
     """Takes in a number of vertices.
@@ -29,7 +30,7 @@ def E(graph):
     -------    
     A graph with set number of edges.
     """
-    return set(graph.edges())
+     return set(graph.edges())
 
 def prims_initialize(graph , v):
      """Function to intialize the tree
@@ -45,11 +46,11 @@ def prims_initialize(graph , v):
     Error if vertix is not found, otherwise graph.
     """
     
-    if v not in V(graph):
-        return 'Error vertex not found'
-    T = nx.Graph()
-    T.add_node(v)
-    return T
+     if v not in V(graph):
+         return 'Error vertex not found'
+     T = nx.Graph()
+     T.add_node(v)
+     return T
 
 def is_spanning(graph, subgraph):
     """Checks to see if graph is spanning.
@@ -112,3 +113,49 @@ def min_cost_edge(G, T):
     edge_list = possible_edges(G, T)
     edge_list.sort(key = lambda e : cost(G, e))
     return edge_list[0]
+
+def FileSelector(directory):
+    """Returns the file selected based on the user input. 
+    
+    Parameters
+    ----------
+    directory : Directory to look for graphs
+    
+    Returns
+    -------
+    The file selected by the user.
+    """
+    
+    entries = os.listdir(directory)
+    entries = [x.upper() for x in entries] 
+    print(entries)
+    inputFile = input('Please enter the desired graph file name to solve: ')
+    if not inputFile.endswith('.txt'):
+            inputFile += '.txt'
+    while inputFile.upper() not in entries:
+        print(entries)
+        inputFile = input('The graph file was not found. Please enter the desired graph file name to solve: ')
+        if not inputFile.endswith('.txt'):
+            inputFile += '.txt'
+    return directory + inputFile
+    
+
+def InputStartingPoint(G):
+    """Returns the starting vertex based on the user input. 
+    
+    Parameters
+    ----------
+    G : NetworkX graph
+    
+    Returns
+    -------
+    The starting vertex selected by the user.
+    """
+     
+    vertices = G.nodes
+    print(vertices)
+    vertex = input('Please enter a vertex listed for the graph: ')
+    while not vertex.isnumeric() or int(vertex) not in vertices:
+        print(vertices)
+        vertex = input('Invalid entry. Please enter a valid vertex listed for the graph: ')
+    return int(vertex)
